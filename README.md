@@ -1,2 +1,1 @@
-# Generating_and_Analysing_ER_Graphs
- 
+# Generating and Analysing ER Graphs
