@@ -15,14 +15,15 @@ def degree_distribution(G):
     
     return items
 
-def plot_degree_distributions(degrees_to_plot, i):
+def plot_degree_distributions(degrees_to_plot, i, graphs_to_plot):
     fig = plt.figure()
     
-    for items in degrees_to_plot:
-        plt.plot([k for (k, v) in items], [v for (k, v) in items])
+    for j in range(len(degrees_to_plot)):
+        plt.plot([k for (k, v) in degrees_to_plot[j]], [v for (k, v) in degrees_to_plot[j]], label = 'Graph {}'.format(graphs_to_plot[j]+1))
         plt.xlabel('Average degree')
         plt.ylabel('Number of nodes')
-        plt.title('Average Degree Distribution')
+        plt.title('Average Degree Distribution - Erdos Renyi')
+        plt.legend()
     
     fig.savefig("Figures\degree_distribution_configuration_{}.png".format(i+1))
 
@@ -95,5 +96,5 @@ for i in range(3):
         print("Plotting degree distribution of graph number:", index+1)
         degrees_to_plot.append(degree_distribution(er_graphs[index]))
 
-    plot_degree_distributions(degrees_to_plot, i)
+    plot_degree_distributions(degrees_to_plot, i, graphs_to_plot)
     print("----------------------------------------------------------------------")
