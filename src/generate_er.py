@@ -3,6 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
+'''
+    A helper function that is used to find the degree
+    distribution of a graph.
+    Arguments:
+            G -> The graph for which we need to find
+            the degree distribution.
+    Return:
+            items -> A sorted list of the degree of each
+            node in the graph.
+'''
+
 def degree_distribution(G):
     degs = {}
 
@@ -14,6 +25,22 @@ def degree_distribution(G):
     items = sorted(degs.items())
     
     return items
+
+'''
+    A helper function that is used to plot the degree
+    distributions from the input list and save the
+    resulting plot.
+    Arguments:
+            degrees_to_plot -> The sorted list of the
+            degrees of the nodes in the graph.
+            i -> A counter used to just name the file
+            of the degree distribution figure to be saved.
+            graphs_to_plot -> A list of indexes of the
+            graphs to plot which is used to create the
+            legend of the degree distribution figure.
+    Return:
+            None.
+'''
 
 def plot_degree_distributions(degrees_to_plot, i, graphs_to_plot):
     fig = plt.figure()
@@ -27,6 +54,20 @@ def plot_degree_distributions(degrees_to_plot, i, graphs_to_plot):
     
     fig.savefig("Figures\degree_distribution_configuration_{}.png".format(i+1))
 
+'''
+    A helper function that generates the random ER
+    graphs.
+    Arguments:
+            num_nodes -> The number of nodes to be in
+            the random ER graph.
+            prob -> The linking probability of any two
+            nodes in the random ER graph.
+            iters -> The number of iterations that need
+            to be run for each configuration.
+    Return:
+            G_list -> The list of graph objects generated.
+'''
+
 def generate_er(num_nodes, prob, iters):
     G_list = []
 
@@ -36,6 +77,24 @@ def generate_er(num_nodes, prob, iters):
         G_list.append(G)
 
     return G_list
+
+'''
+    A helper function that is used for the analysis of
+    the random ER graphs. It is used to find the average
+    degree, average clustering coefficient and the average
+    path length of each graph.
+    Arguments:
+            G_list -> The list of graph objects to be
+            analysed.
+    Return:
+            avgDList -> The list of average degree of
+            each graph object in the G_list.
+            avgCList -> The list of average clustering
+            coefficient of each graph object in the
+            G_list.
+            avgPLList -> The list of average path length
+            of each graph object in the G_list.
+'''
 
 def analyse_er(G_list):
 
